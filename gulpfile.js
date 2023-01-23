@@ -11,12 +11,12 @@ const browserSync = require('browser-sync').create();
 function style() {
     // 1. Where is my scss file
     return gulp.src('./src/scss/**/*.scss')
-        // 2. pass that file through saa compiler
-        .pipe(sass())
-        // 3. Where do I save the compiled CSS?
-        .pipe(gulp.dest('./assets/css/'))
-        // 4. Streams changes to all browsers
-        .pipe(browserSync.stream());
+    // 2. pass that file through saa compiler
+    .pipe(sass())
+    // 3. Where do I save the compiled CSS?
+    .pipe(gulp.dest('./dist/assets/css/'))
+    // 4. Streams changes to all browsers
+    .pipe(browserSync.stream());
 }
 
 const jsFiles = [
@@ -35,14 +35,15 @@ function bundleJs() {
 }
 
 function watch() {
+
     browserSync.init({
         server: {
             baseDir: './'
         }
     });
 
-    gulp.watch('./scss/**/*.scss', style);
-    gulp.watch('./js/**/*.js', style);
+    gulp.watch('./src/scss/**/*.scss', style);
+    // gulp.watch('./js/**/*.js', style);
     gulp.watch('./*.html').on('change', browserSync.reload);
     gulp.watch('./views/*.html').on('change', browserSync.reload);
     gulp.watch('./js/**/*.js').on('change', browserSync.reload);
