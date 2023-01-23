@@ -19,7 +19,10 @@ function style() {
         .pipe(browserSync.stream());
 }
 
-const jsFiles = ['./src/bootstrap/js/alert.js' ,'./src/bootstrap/js/button.js']
+const jsFiles = [
+    './src/bootstrap/js/alert.js',
+    './src/bootstrap/js/button.js'
+]
 
 function bundleJs() {
     return src(jsFiles)
@@ -48,5 +51,5 @@ function watch() {
 
 
 exports.style = style;
-exports.bundleJs = bundleJs;
+// exports.bundleJs = bundleJs;
 exports.watch = watch; 
